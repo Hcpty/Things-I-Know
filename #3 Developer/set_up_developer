@@ -1,20 +1,20 @@
 #!/bin/sh
 #
-# Set up development environment.
+# Set up developer programs.
 
 set -ex
 
-echo 'Set up development environment'
+echo 'Set up developer programs'
 pkg install editors/vim devel/git
 
-echo 'Set up sh development environment'
+echo 'Set up sh developer programs'
 pkg install devel/shfmt devel/hs-ShellCheck
 
-echo 'Set up HTML/CSS/TypeScript development environment'
+echo 'Set up HTML/CSS/TypeScript developer programs'
 pkg install www/node22
 corepack enable pnpm
 
-echo 'Set up Java development environment'
+echo 'Set up Java developer programs'
 pkg install java/openjdk21
 echo -e 'fdesc\t\t/dev/fd\t\tfdescfs\trw\t0\t0' >> /etc/fstab
 echo -e 'proc\t\t/proc\t\tprocfs\trw\t0\t0' >> /etc/fstab
