@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# google-java-format is a program that reformats Java source code to comply with Google Java Style.
+
+/usr/local/bin/java -jar /usr/local/lib/google-java-format.jar "$@"

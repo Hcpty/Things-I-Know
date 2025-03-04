@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Set up HcptyDeveloper.
+
+set -ex
+
+echo 'Set up development environment'
+pkg install editors/vim devel/git
+
+echo 'Set up sh development environment'
+pkg install devel/shfmt devel/hs-ShellCheck
+
+echo 'Set up HTML/CSS/TypeScript development environment'
+pkg install www/node22
+corepack enable pnpm
+
+echo 'Set up Java development environment'
+pkg install java/openjdk21
+echo -e 'fdesc\t\t/dev/fd\t\tfdescfs\trw\t0\t0' >> /etc/fstab
+echo -e 'proc\t\t/proc\t\tprocfs\trw\t0\t0' >> /etc/fstab
+mount -a
+pkg install devel/maven
+cp google-java-format.jar /usr/local/lib/
+cp google-java-format /usr/local/bin/
+chmod +x /usr/local/bin/google-java-format

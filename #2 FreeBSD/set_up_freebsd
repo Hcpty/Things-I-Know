@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Set up FreeBSD.
+
+set -ex
+
+echo 'Set up FreeBSD'
+
+echo 'Set up single user mode'
+sed -i -e 's/unknown\toff secure/unknown\toff insecure/' /etc/ttys
+
+echo 'Set up ntpd'
+sysrc ntpd_enable=YES
+sysrc ntpd_sync_on_start=YES
+service ntpd fetch
+service ntpd start
+
+echo 'Set up sshd'
+sed -i -e 's/#KbdInteractiveAuthentication yes/KbdInteractiveAuthentication no/' /etc/ssh/sshd_config
+service sshd restart
+
+echo 'Set up the freebsd user'
+mkdir /home/freebsd/.ssh/
+echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGge+4IKvItFzS9kisMlhTZrpPTcpX8EClhNjiKNSQ5I hcpty@outlook.com' > /home/freebsd/.ssh/authorized_keys
+chown -R freebsd:freebsd /home/freebsd/.ssh/
+chmod 700 /home/freebsd/.ssh/
+chmod 600 /home/freebsd/.ssh/authorized_keys

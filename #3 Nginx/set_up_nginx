@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Set up Nginx.
+
+set -ex
+
+pkg install www/nginx
+sysrc nginx_enable=YES
+service nginx start
