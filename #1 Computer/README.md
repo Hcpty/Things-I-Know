@@ -1,4 +1,4 @@
-# HcptyComputer
+# Computer
 
 ## 二进制算术逻辑运算
 

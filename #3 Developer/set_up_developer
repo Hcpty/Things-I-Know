@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Set up HcptyDeveloper.
+# Set up development environment.
 
 set -ex
 
